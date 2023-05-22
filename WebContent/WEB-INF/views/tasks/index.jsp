@@ -22,5 +22,19 @@
 
 		<p><a href="<c:url value='/new' />">新規タスクの投稿</a></p>
 
+		<div id="pagination">
+			（全${tasks_count}件）<br />
+			<c:forEach var="i" begin="1" end="${(tasks_count - 1) / 15 + 1}" >
+				<c:choose>
+					<c:when test="${id == page}">
+						<c:out value="${i}" />&nbsp
+					</c:when>
+					<c:otherwise>
+						<a href="<c:url value='/index' />?page=${i}"><c:out value="${i}" /></a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</div>
+
 	</c:param>
 </c:import>
